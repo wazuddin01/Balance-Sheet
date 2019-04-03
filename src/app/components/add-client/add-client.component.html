@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back to dashboard </a>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+<div class="card">
+  <div class="card-header">Add Client</div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input formControlName="FirstName" type="text" class="form-control">
+        <div *ngIf="firstName.touched && firstName.invalid" class="help-block">
+          <div *ngIf="firstName.errors.required">First name is required</div>
+          <div *ngIf="firstName.errors.minlength">
+            First name should be {{firstName.errors.minlength.requiredLength}} characters Long
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input formControlName="LastName" type="text" class="form-control">
+        <div *ngIf="lastName.touched && lastName.invalid" class="help-block">
+          <div *ngIf="lastName.errors.required">First name is required</div>
+          <div *ngIf="lastName.errors.minlength">First name should be
+            {{lastName.errors.minlength.requiredLength}}
+            characters Long
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" type="text" class="form-control">
+        <div *ngIf="email.touched && email.invalid" class="help-block">
+          <div *ngIf="email.errors.required">Email is Required</div>
+          <div *ngIf="email.errors.valid">Email is not valid</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">phone</label>
+        <input formControlName="phone" type="text" class="form-control">
+        <div *ngIf="phone.touched && phone.invalid" class="help-block">
+          <div *ngIf="phone.errors.required">Phone number is Requried</div>
+          <div *ngIf="phone.errors.minlength || phone.errors.maxlength"> Phone number should be of length
+            {{phone.errors.minlength.requiredLength}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="balance">balance</label>
+        <input  formControlName="balance" type="number" class="form-control">
+        <div *ngIf="balance.touched && balance.invalid" class="help-block">
+            <div *ngIf="balance.errors.required">Enter your Balance</div>
+        </div>
+      </div>
+      <input type="submit"  class="btn btn-primary btn-block">
+    </form>
+  </div>
+</div>
